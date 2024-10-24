@@ -1,4 +1,4 @@
-# FastAPI
+# GERENCIADOR DE ESTOQUE
 
 ## 📒 Descrição
 O presente programa foi elaborado para apresentação da aprendizagem do conceito: API utilizando o FastAPI um dos frameworks solicitados em vários projetos com o fito de aprendizagem e aplicação de conceitos estudados na documentação da mesma juntamente com o Python, Streamlit e Sqlite3 e para ser prova de capacitação intelectual e prática dos conceitos.
