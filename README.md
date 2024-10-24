@@ -3,6 +3,16 @@
 ## 📒 Descrição
 O presente programa foi elaborado para apresentação da aprendizagem do conceito: API utilizando o FastAPI um dos frameworks solicitados em vários projetos com o fito de aprendizagem e aplicação de conceitos estudados na documentação da mesma juntamente com o Python, Streamlit e Sqlite3 e para ser prova de capacitação intelectual e prática dos conceitos.
 
+## Instruções:
+- 1° Step: Faça um fork do projeto
+- 2° Step: python -m venv env
+- 3° Step: Ativar a Virtualenv: source nome_da_virtualenv/bin/activate (Linux ou macOS) nome_da_virtualenv/Scripts/Activate (Windows) 
+- 4° Step: pip install -r requirements
+- 5º Step: 
+  Tendo aberto dois terminais: em ambos você ativa a Virtualenv seguindo o 3° Step acima
+    em um você executa: streamlit run frontend.py
+    e no outro: uvicorn backend:app --reload
+- 6° Step: Utilize com sabedoria.
 
 ## 🤖 Tecnologias Utilizadas
 - Ferramenta de Desenvolvimento **[VS Code](https://code.visualstudio.com/download)** para desenvolver localmente a criação do programa;
