@@ -4,7 +4,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hyagow/)
 ## Habilidades
 [![Python](https://img.shields.io/badge/Python-2b5b84?style=for-the-badge&logo=python&logoColor=white)](https://docs.python.org/)
-[![Streamlit](https://img.shields.io/badge/streamlit-E34F26?style=for-the-badge&logo=streamlit&logoColor=white)](https://docs.streamlit.io/)
+[![Streamlit](https://img.shields.io/badge/streamlit-FFF?style=for-the-badge&logo=streamlit&logoColor=red)](https://docs.streamlit.io/)
 [![Sqlite3](https://img.shields.io/badge/sqlite3-1572B6?style=for-the-badge&logo=sqlite&logoColor=white)](https://sqlite.org/docs.html)
 [![FastAPI](https://img.shields.io/badge/FastAPI-FFF?style=for-the-badge&logo=FastAPI&logoColor=059395)](https://fastapi.tiangolo.com)
 [![Git](https://img.shields.io/badge/Git-000?style=for-the-badge&logo=git&logoColor=E94D5F)](https://git-scm.com/doc)
