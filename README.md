@@ -41,5 +41,5 @@ O programa foi elaborado para testar os conceitos de CRUD, como CREATE, READ, UP
 ## 💭 Reflexão
 Através deste projeto fiquei mais motivado para elaborar outros programas utilizando a framework FastAPI pois ela da uma flexibilidade para o aumento da produtividade da elaboração de rotas que são de suma importância para a efetividade e melhora de desempenho.
 
-** Sobre **
+## 📜 Sobre 
 Projeto sujeito a atualizações.
