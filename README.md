@@ -12,7 +12,12 @@ O presente programa foi elaborado para apresentação da aprendizagem do conceit
   Tendo aberto dois terminais: em ambos você ativa a Virtualenv seguindo o 3° Step acima
     em um você executa: streamlit run frontend.py
     e no outro: uvicorn backend:app --reload
-- 6° Step: Utilize com sabedoria.
+- 6° Step: Com está em fase experimental o programa poderá ter a aparência muito simples.
+- 7° Step: Insira o token adequado que tenha as responsabilidades a serem utilizadas:
+          gerente: para Autorização / Listagem Produtos e Movimentações
+          usuario: para Solicitar Compra/ Listar Minhas Solicitações / Relatório Posicional Semanal
+          estoquista: para Cadastrar Produto / Listar Produtos / Atualizar Estoque / Cadastrar Movimentação / Listar Movimentações
+
 
 ## 🤖 Tecnologias Utilizadas
 - Ferramenta de Desenvolvimento **[VS Code](https://code.visualstudio.com/download)** para desenvolver localmente a criação do programa;
