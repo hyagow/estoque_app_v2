@@ -8,6 +8,7 @@ API_URL = "http://localhost:8000"
 def get_user_role(token):
     return token.split(":")[0]  # Exemplo de token no formato "role:token"
 
+# Função para cadastrar o estoquista cadastrar os produtos
 def cadastrar_produto(token):
     st.header("Cadastro de Produto")
     nome = st.text_input("Nome")
