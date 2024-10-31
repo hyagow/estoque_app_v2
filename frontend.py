@@ -34,6 +34,8 @@ def cadastrar_produto(token):
         else:
             st.error("Erro ao cadastrar produto.")
 
+
+# Função para listar os produtos que foram cadastrados pelo estoquista
 def listar_produtos(token):
     st.header("Lista de Produtos")
     headers = {"Authorization": f"Bearer {token}"}
