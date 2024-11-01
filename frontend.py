@@ -49,6 +49,7 @@ def listar_produtos(token):
     else:
         st.error("Erro ao buscar produtos.")
 
+# Função para o estoquista atualizar o estoque 
 def atualizar_estoque(token):
     st.header("Atualizar Estoque")
     produto_id = st.number_input("ID do Produto", min_value=1)
