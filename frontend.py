@@ -63,6 +63,7 @@ def atualizar_estoque(token):
         else:
             st.error("Erro ao atualizar estoque.")
 
+# Função para o estoquista cadastrar a movimentação
 def cadastrar_movimentacao(token):
     st.header("Cadastro de Movimentação")
 
