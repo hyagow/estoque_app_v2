@@ -90,6 +90,7 @@ def cadastrar_movimentacao(token):
         else:
             st.error(f"Erro ao cadastrar movimentação: {response.json()}")
 
+# Função para o cliente solicitar compra ou encomendar algum produto.
 def solicitar_compra(token):
     st.header("Solicitar Compra")
 
