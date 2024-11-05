@@ -147,7 +147,7 @@ def autorizar_compra(token):
             error_message = response.json().get("mensagem", "Erro desconhecido.")
             st.error(f"Erro ao autorizar compra: {error_message} (Código: {response.status_code})")
 
-
+# Função para o usuario ter acesso ao relatório posicional semanal de suas compras
 def relatorio_posicao_semanal(token):
     st.header("Relatório de Posição Semanal")
     headers = {"Authorization": f"Bearer {token}"}
