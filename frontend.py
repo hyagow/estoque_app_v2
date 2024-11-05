@@ -116,7 +116,7 @@ def solicitar_compra(token):
                 st.error("Erro ao solicitar compra.")
     else:
         st.error("Erro ao buscar produtos.")
-
+# Função para o gerente autorizar a compra/encomenda do cliente.
 def autorizar_compra(token):
     st.header("Autorizar Compra")
 
