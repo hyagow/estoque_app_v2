@@ -162,7 +162,7 @@ def relatorio_posicao_semanal(token):
     else:
         st.error("Erro ao buscar relatório de posição semanal.")
 
-
+# Listar as movimentações: estoquista e gerente
 def listar_movimentacoes(token):
     st.header("Movimentações de Produtos")
     headers = {"Authorization": f"Bearer {token}"}
