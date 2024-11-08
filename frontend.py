@@ -4,10 +4,13 @@ from datetime import datetime
 
 API_URL = "http://localhost:8000"
 
+
 # Função para obter o tipo de usuário do token
 def get_user_role(token):
     return token.split(":")[0]  # Exemplo de token no formato "role:token"
 
+
+# Função para cadastrar o estoquista cadastrar os produtos
 def cadastrar_produto(token):
     st.header("Cadastro de Produto")
     nome = st.text_input("Nome")
@@ -33,6 +36,8 @@ def cadastrar_produto(token):
         else:
             st.error("Erro ao cadastrar produto.")
 
+
+# Função para listar os produtos que foram cadastrados pelo estoquista
 def listar_produtos(token):
     st.header("Lista de Produtos")
     headers = {"Authorization": f"Bearer {token}"}
@@ -46,6 +51,8 @@ def listar_produtos(token):
     else:
         st.error("Erro ao buscar produtos.")
 
+
+# Função para o estoquista atualizar o estoque
 def atualizar_estoque(token):
     st.header("Atualizar Estoque")
     produto_id = st.number_input("ID do Produto", min_value=1)
@@ -53,12 +60,18 @@ def atualizar_estoque(token):
 
     if st.button("Atualizar"):
         headers = {"Authorization": f"Bearer {token}"}
-        response = requests.put(f"{API_URL}/produtos/{produto_id}", json={"quantidade": quantidade}, headers=headers)
+        response = requests.put(
+            f"{API_URL}/produtos/{produto_id}",
+            json={"quantidade": quantidade},
+            headers=headers,
+        )
         if response.status_code == 200:
             st.success(response.json()["mensagem"])
         else:
             st.error("Erro ao atualizar estoque.")
 
+
+# Função para o estoquista cadastrar a movimentação
 def cadastrar_movimentacao(token):
     st.header("Cadastro de Movimentação")
 
@@ -78,13 +91,17 @@ def cadastrar_movimentacao(token):
             "data": datetime.now().isoformat(),
         }
         headers = {"Authorization": f"Bearer {token}"}
-        response = requests.post(f"{API_URL}/movimentacoes/", json=movimentacao, headers=headers)
+        response = requests.post(
+            f"{API_URL}/movimentacoes/", json=movimentacao, headers=headers
+        )
 
         if response.status_code == 200:
             st.success(response.json()["mensagem"])
         else:
             st.error(f"Erro ao cadastrar movimentação: {response.json()}")
 
+
+# Função para o cliente solicitar compra ou encomendar algum produto.
 def solicitar_compra(token):
     st.header("Solicitar Compra")
 
@@ -93,9 +110,11 @@ def solicitar_compra(token):
     response = requests.get(f"{API_URL}/produtos/", headers=headers)
     if response.status_code == 200:
         produtos = response.json()
-        produto_options = {produto['nome']: produto['id'] for produto in produtos}
-        
-        produto_selecionado = st.selectbox("Escolha um Produto", options=list(produto_options.keys()))
+        produto_options = {produto["nome"]: produto["id"] for produto in produtos}
+
+        produto_selecionado = st.selectbox(
+            "Escolha um Produto", options=list(produto_options.keys())
+        )
         quantidade = st.number_input("Quantidade", min_value=1)
 
         if st.button("Solicitar Compra"):
@@ -103,7 +122,9 @@ def solicitar_compra(token):
                 "produto_id": produto_options[produto_selecionado],
                 "quantidade": quantidade,
             }
-            response = requests.post(f"{API_URL}/compras/solicitar", json=solicitacao, headers=headers)
+            response = requests.post(
+                f"{API_URL}/compras/solicitar", json=solicitacao, headers=headers
+            )
             if response.status_code == 200:
                 st.success(response.json()["mensagem"])
             else:
@@ -111,42 +132,62 @@ def solicitar_compra(token):
     else:
         st.error("Erro ao buscar produtos.")
 
+
+# Função para o gerente autorizar a compra/encomenda do cliente.
 def autorizar_compra(token):
     st.header("Autorizar Compra")
 
     # Listar as solicitações de compra
     solicitacoes = listar_solicitacoes(token)
-    
+
     if not solicitacoes:
         st.warning("Nenhuma solicitação de compra encontrada.")
         return
-    
+
     # Criar um seletor para escolher uma solicitação
-    solicitacao_options = {f"ID: {solicitacao['id']} - Produto ID: {solicitacao['produto_id']} - Quantidade: {solicitacao['quantidade']}": solicitacao['id'] for solicitacao in solicitacoes}
-    solicitacao_id = st.selectbox("Escolha uma Solicitação", options=list(solicitacao_options.keys()))
+    solicitacao_options = {
+        f"ID: {solicitacao['id']} - Produto ID: {solicitacao['produto_id']} - Quantidade: {solicitacao['quantidade']}": solicitacao[
+            "id"
+        ]
+        for solicitacao in solicitacoes
+    }
+    solicitacao_id = st.selectbox(
+        "Escolha uma Solicitação", options=list(solicitacao_options.keys())
+    )
 
     # Obter o ID da solicitação selecionada
     selected_solicitacao_id = solicitacao_options[solicitacao_id]
 
     # Obter a quantidade da solicitação selecionada
-    quantidade = next(sol['quantidade'] for sol in solicitacoes if sol['id'] == selected_solicitacao_id)
+    quantidade = next(
+        sol["quantidade"]
+        for sol in solicitacoes
+        if sol["id"] == selected_solicitacao_id
+    )
 
     if st.button("Autorizar Compra"):
         headers = {"Authorization": f"Bearer {token}"}
-        response = requests.post(f"{API_URL}/compras/autorizar", json={"produto_id": selected_solicitacao_id, "quantidade": quantidade}, headers=headers)
-        
+        response = requests.post(
+            f"{API_URL}/compras/autorizar",
+            json={"produto_id": selected_solicitacao_id, "quantidade": quantidade},
+            headers=headers,
+        )
+
         if response.status_code == 200:
             st.success(response.json()["mensagem"])
         else:
             error_message = response.json().get("mensagem", "Erro desconhecido.")
-            st.error(f"Erro ao autorizar compra: {error_message} (Código: {response.status_code})")
+            st.error(
+                f"Erro ao autorizar compra: {error_message} (Código: {response.status_code})"
+            )
 
-# Função para o usuário saber o relatório posicional semanal dele.
+
+# Função para o usuario ter acesso ao relatório posicional semanal de suas compras
 def relatorio_posicao_semanal(token):
     st.header("Relatório de Posição Semanal")
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(f"{API_URL}/relatorios/semanal/", headers=headers)
-    
+
     if response.status_code == 200:
         relatorio = response.json()
         for item in relatorio:
@@ -157,6 +198,7 @@ def relatorio_posicao_semanal(token):
         st.error("Erro ao buscar relatório de posição semanal.")
 
 
+# Listar as movimentações: estoquista e gerente
 def listar_movimentacoes(token):
     st.header("Movimentações de Produtos")
     headers = {"Authorization": f"Bearer {token}"}
@@ -174,24 +216,25 @@ def listar_movimentacoes(token):
 def listar_solicitacoes(token):
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(f"{API_URL}/compras/solicitacoes", headers=headers)
-    
+
     if response.status_code == 200:
         return response.json()  # Retorna a lista de solicitações
     else:
         st.error("Erro ao listar solicitações de compra.")
         return []
 
+
 def listar_minhas_solicitacoes(token):
     st.header("Minhas Solicitações de Compra")
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(f"{API_URL}/compras/solicitacoes/meus/", headers=headers)
-    
+
     if response.status_code == 200:
         solicitacoes = response.json()
         if not solicitacoes:
             st.warning("Nenhuma solicitação de compra encontrada.")
             return
-        
+
         for solicitacao in solicitacoes:
             st.write(
                 f"**Produto ID:** {solicitacao['produto_id']}, **Quantidade:** {solicitacao['quantidade']}, **Status:** {solicitacao['status']}"
@@ -204,17 +247,22 @@ def listar_minhas_solicitacoes(token):
 st.sidebar.title("Menu")
 
 # Simulação de autenticação
-token = st.sidebar.text_input("Token de Acesso", type="password")  # Para simular a entrada do token
+token = st.sidebar.text_input(
+    "Token de Acesso", type="password"
+)  # Para simular a entrada do token
 role = get_user_role(token) if token else None
 
 if role == "estoquista":
-    menu = st.sidebar.radio("Escolha uma opção:", [
-        "Cadastrar Produto", 
-        "Listar Produtos", 
-        "Atualizar Estoque", 
-        "Cadastrar Movimentação", 
-        "Listar Movimentações"
-    ])
+    menu = st.sidebar.radio(
+        "Escolha uma opção:",
+        [
+            "Cadastrar Produto",
+            "Listar Produtos",
+            "Atualizar Estoque",
+            "Cadastrar Movimentação",
+            "Listar Movimentações",
+        ],
+    )
     if menu == "Cadastrar Produto":
         cadastrar_produto(token)
     elif menu == "Listar Produtos":
@@ -227,11 +275,14 @@ if role == "estoquista":
         listar_movimentacoes(token)
 
 elif role == "usuario":
-    menu = st.sidebar.radio("Escolha uma opção:", [
-        "Solicitar Compra", 
-        "Listar Minhas Solicitações",
-        "Relatório de Posição Semanal",  # Nova opção
-    ])
+    menu = st.sidebar.radio(
+        "Escolha uma opção:",
+        [
+            "Solicitar Compra",
+            "Listar Minhas Solicitações",
+            "Relatório de Posição Semanal",  # Nova opção
+        ],
+    )
     if menu == "Solicitar Compra":
         solicitar_compra(token)
     elif menu == "Listar Produtos":
@@ -242,11 +293,10 @@ elif role == "usuario":
         relatorio_posicao_semanal(token)
 
 elif role == "gerente":
-    menu = st.sidebar.radio("Escolha uma opção:", [
-        "Autorizar Compra", 
-        "Listar Produtos", 
-        "Listar Movimentações"
-    ])
+    menu = st.sidebar.radio(
+        "Escolha uma opção:",
+        ["Autorizar Compra", "Listar Produtos", "Listar Movimentações"],
+    )
     if menu == "Autorizar Compra":
         autorizar_compra(token)
     elif menu == "Listar Produtos":
