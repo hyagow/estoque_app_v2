@@ -56,10 +56,6 @@ Projeto sujeito a atualizações.
 
 ## GitHub Stats
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=hyagow&theme=transparent&bg_color=000&border_color=30A3DC&show_icons=true&icon_color=30A3DC&title_color=E94D5F&text_color=FFF)
-<<<<<<< HEAD
 ## Linguagens que mais uso:
-=======
-## Linguagens mais usadas
->>>>>>> 4d516d56ab380fcaa166fbb7499219e1736c889d
 ![Top Langs](https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=hyagow&layout=compact&bg_color=000&border_color=30A3DC&title_color=E94D5F&text_color=FFF)
 
