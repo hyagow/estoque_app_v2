@@ -213,7 +213,7 @@ def listar_movimentacoes(token):
         st.error("Erro ao buscar movimentações.")
 
 
-# Função para o usuario listar as solicitações de compra.
+# Função para listar todas as solicitações de compra.
 def listar_solicitacoes(token):
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(f"{API_URL}/compras/solicitacoes", headers=headers)
@@ -225,6 +225,7 @@ def listar_solicitacoes(token):
         return []
 
 
+# Função para o usuario listar as solicitações de compra.
 def listar_minhas_solicitacoes(token):
     st.header("Minhas Solicitações de Compra")
     headers = {"Authorization": f"Bearer {token}"}
