@@ -68,6 +68,7 @@ def get_user_role(token: str):
     return token.split(":")[0]
 
 
+# Rota de criação de produto: estoquista
 @app.post("/produtos/", response_model=dict)
 async def create_produto(produto: Produto, token: str = Depends(oauth2_scheme)):
     role = get_user_role(token)
