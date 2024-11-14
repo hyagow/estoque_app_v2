@@ -94,6 +94,7 @@ async def create_produto(produto: Produto, token: str = Depends(oauth2_scheme)):
         return {"mensagem": "Produto cadastrado com sucesso!"}
 
 
+# Rota de leitura de produto: estoquista e usuário
 @app.get("/produtos/", response_model=List[dict])
 async def read_produtos(token: str = Depends(oauth2_scheme)):
     with get_db_connection() as conn:
