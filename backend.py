@@ -102,6 +102,7 @@ async def read_produtos(token: str = Depends(oauth2_scheme)):
         return [dict(produto) for produto in produtos]
 
 
+# Rota de leitura de produto: estoquista
 @app.put("/produtos/{produto_id}", response_model=dict)
 async def update_produto(
     produto_id: int, produto: Produto, token: str = Depends(oauth2_scheme)
