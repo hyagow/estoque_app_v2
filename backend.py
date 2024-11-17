@@ -128,6 +128,7 @@ async def update_produto(
     return {"mensagem": "Produto atualizado com sucesso!"}
 
 
+# Rota de exclusação de produto: gerente
 @app.delete("/produtos/{produto_id}", response_model=dict)
 async def delete_produto(produto_id: int, token: str = Depends(oauth2_scheme)):
     role = get_user_role(token)
