@@ -141,6 +141,7 @@ async def delete_produto(produto_id: int, token: str = Depends(oauth2_scheme)):
     return {"mensagem": "Produto deletado com sucesso!"}
 
 
+# Rota de criação de movimentação de produto: estoquista
 @app.post("/movimentacoes/", response_model=dict)
 async def create_movimentacao(
     movimentacao: Movimentacao, token: str = Depends(oauth2_scheme)
