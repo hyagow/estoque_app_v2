@@ -166,6 +166,7 @@ async def create_movimentacao(
         return {"mensagem": "Movimentação cadastrada com sucesso!"}
 
 
+# Rota de solicitação de compra: usuario
 @app.post("/compras/solicitar/", response_model=dict)
 async def solicitar_compra(
     solicitacao: SolicitarCompra, token: str = Depends(oauth2_scheme)
