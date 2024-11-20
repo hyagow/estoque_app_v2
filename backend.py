@@ -185,6 +185,7 @@ async def solicitar_compra(
     return {"mensagem": "Solicitação de compra registrada com sucesso!"}
 
 
+# Rota de autorização de compra: gerente
 @app.post("/compras/autorizar/", response_model=dict)
 async def autorizar_compra(
     solicitacao: AutorizarCompra, token: str = Depends(oauth2_scheme)
