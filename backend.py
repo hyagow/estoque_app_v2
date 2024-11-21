@@ -203,6 +203,7 @@ async def autorizar_compra(
     return {"mensagem": "Compra autorizada com sucesso!"}
 
 
+# Rota de listar solicitações: gerente
 @app.get("/compras/solicitacoes/", response_model=List[dict])
 async def listar_solicitacoes(token: str = Depends(oauth2_scheme)):
     role = get_user_role(token)
