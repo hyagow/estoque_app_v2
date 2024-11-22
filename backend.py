@@ -215,6 +215,7 @@ async def listar_solicitacoes(token: str = Depends(oauth2_scheme)):
     return [dict(solicitacao) for solicitacao in solicitacoes]
 
 
+# Rota para listar as solicitações do usuario: usuario
 @app.get("/compras/solicitacoes/meus/", response_model=List[dict])
 async def listar_minhas_solicitacoes(token: str = Depends(oauth2_scheme)):
     role = get_user_role(token)
