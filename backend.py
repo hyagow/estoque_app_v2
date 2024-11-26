@@ -239,6 +239,7 @@ async def read_movimentacoes(token: str = Depends(oauth2_scheme)):
         return [dict(movimentacao) for movimentacao in movimentacoes]
 
 
+# Rota para ver as solicitações de compra do usuario: usuario
 @app.get("/movimentacoes/", response_model=List[dict])
 async def my_movimentacoes(token: str = Depends(oauth2_scheme)):
     usuario = token.split(":")[0]  # Obtém o nome do usuário do token
