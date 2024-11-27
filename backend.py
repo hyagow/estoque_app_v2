@@ -252,6 +252,7 @@ async def my_movimentacoes(token: str = Depends(oauth2_scheme)):
         return [dict(movimentacao) for movimentacao in movimentacoes]
 
 
+# Rota para o usuario ver seu relatório semanal
 @app.get("/relatorios/semanal/", response_model=List[dict])
 async def relatorio_semanal(token: str = Depends(oauth2_scheme)):
     role = get_user_role(token)
