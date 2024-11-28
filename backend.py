@@ -300,6 +300,7 @@ async def relatorio_semanal(token: str = Depends(oauth2_scheme)):
     return relatorio
 
 
+# Rota para o estoquista registrar as entradas
 @app.post("/produtos/entrada/", response_model=dict)
 async def registrar_entrada(
     produto_id: int, quantidade: int, token: str = Depends(oauth2_scheme)
