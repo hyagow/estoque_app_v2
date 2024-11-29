@@ -318,6 +318,7 @@ async def registrar_entrada(
     return {"mensagem": "Entrada de produto registrada com sucesso!"}
 
 
+# Rota para o estoquista registrar as saídas
 @app.post("/produtos/saida/", response_model=dict)
 async def registrar_saida(
     produto_id: int, quantidade: int, token: str = Depends(oauth2_scheme)
