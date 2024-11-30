@@ -1,10 +1,13 @@
 # database.py
 import sqlite3
 
+
+# Database connection
 def get_db_connection():
     conn = sqlite3.connect("estoque.db", timeout=30)
     conn.row_factory = sqlite3.Row
     return conn
+
 
 def create_tables():
     with get_db_connection() as conn:
@@ -48,5 +51,6 @@ def create_tables():
             )
             """
         )
+
 
 create_tables()
