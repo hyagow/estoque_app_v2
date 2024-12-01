@@ -9,6 +9,7 @@ def get_db_connection():
     return conn
 
 
+# Create a new table in database
 def create_tables():
     with get_db_connection() as conn:
         conn.execute(
