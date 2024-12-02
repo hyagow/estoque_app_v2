@@ -54,4 +54,5 @@ def create_tables():
         )
 
 
+# Executando a criação de tabelas
 create_tables()
