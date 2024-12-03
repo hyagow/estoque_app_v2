@@ -49,6 +49,7 @@ USUARIOS = {
     "gerente": {"username": "gerente", "password": "senha", "role": "gerente"},
 }
 
+# Autenticação
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
