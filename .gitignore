@@ -1,9 +1,5 @@
 env
 .mypy_cache
 __pycache__
-<<<<<<< HEAD
 estoque.db
 debug.log
-=======
-estoque.db
->>>>>>> 4d516d56ab380fcaa166fbb7499219e1736c889d
