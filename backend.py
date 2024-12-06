@@ -65,6 +65,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     raise HTTPException(status_code=400, detail="Usuário ou senha incorretos.")
 
 
+# Rota de token de acesso
 def get_user_role(token: str):
     return token.split(":")[0]
 
