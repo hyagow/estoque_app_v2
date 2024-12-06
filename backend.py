@@ -5,6 +5,7 @@ from database import get_db_connection
 from typing import List
 from datetime import datetime, timedelta
 
+# Inicialização do FastAPI
 app = FastAPI()
 
 
