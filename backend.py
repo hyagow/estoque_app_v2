@@ -38,6 +38,7 @@ class Usuario(BaseModel):
     role: str
 
 
+# Modelo para autorizar compra: gerente
 class AutorizarCompra(BaseModel):
     produto_id: int
     quantidade: int
