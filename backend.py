@@ -32,6 +32,7 @@ class Movimentacao(BaseModel):
     observacao: str
 
 
+# Modelo de usuario
 class Usuario(BaseModel):
     username: str
     password: str
