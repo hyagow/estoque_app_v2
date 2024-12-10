@@ -24,6 +24,7 @@ class SolicitarCompra(BaseModel):
     quantidade: int
 
 
+# Modelo de movimentação
 class Movimentacao(BaseModel):
     produto_id: int
     tipo: str
