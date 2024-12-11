@@ -19,6 +19,7 @@ class Produto(BaseModel):
     nota_fiscal: str
 
 
+# Modelo de Solicitar Compra: usuario
 class SolicitarCompra(BaseModel):
     produto_id: int
     quantidade: int
