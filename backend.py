@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 app = FastAPI()
 
 
-# Modelos
+# Modelo de Produto
 class Produto(BaseModel):
     nome: str
     categoria: str
