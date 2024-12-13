@@ -9,9 +9,10 @@ def get_db_connection():
     return conn
 
 
-# Create a new table in database
+# Functions to create a tables
 def create_tables():
     with get_db_connection() as conn:
+        # Create table produto if it doesn't exist
         conn.execute(
             """
             CREATE TABLE IF NOT EXISTS produtos (
