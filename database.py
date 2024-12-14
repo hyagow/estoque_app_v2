@@ -27,6 +27,7 @@ def create_tables():
             )
             """
         )
+        # Create table movimentacoes if it doesn't exist
         conn.execute(
             """
             CREATE TABLE IF NOT EXISTS movimentacoes (
