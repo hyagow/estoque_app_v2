@@ -42,6 +42,7 @@ def create_tables():
             )
             """
         )
+        # Create table solicitacoes_compra if it doesn't exist
         conn.execute(
             """
             CREATE TABLE IF NOT EXISTS solicitacoes_compra (
