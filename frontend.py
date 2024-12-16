@@ -111,7 +111,7 @@ def solicitar_compra(token):
     if response.status_code == 200:
         produtos = response.json()
         produto_options = {produto["nome"]: produto["id"] for produto in produtos}
-
+        # Seleção de produtos
         produto_selecionado = st.selectbox(
             "Escolha um Produto", options=list(produto_options.keys())
         )
