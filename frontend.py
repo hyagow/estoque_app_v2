@@ -117,6 +117,7 @@ def solicitar_compra(token):
         )
         quantidade = st.number_input("Quantidade", min_value=1)
 
+        # Butão para selecionar a compra
         if st.button("Solicitar Compra"):
             solicitacao = {
                 "produto_id": produto_options[produto_selecionado],
