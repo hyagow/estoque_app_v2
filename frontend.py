@@ -80,7 +80,7 @@ def cadastrar_movimentacao(token):
     tipo = st.selectbox("Tipo", options=["entrada", "saida"])
     observacao = st.text_area("Observação")
     pedido_id = st.number_input("ID do Pedido", min_value=1)
-
+    # Butão para selecionar a Cadastrar Movimentação
     if st.button("Cadastrar Movimentação"):
         movimentacao = {
             "produto_id": produto_id,
