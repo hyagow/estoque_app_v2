@@ -58,7 +58,7 @@ USUARIOS = {
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
-# Rota de token de acesso: gerente, estoquista e usuário
+# Rota do gerador de token para acesso: gerente, estoquista e usuário
 @app.post("/token")
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = USUARIOS.get(form_data.username)
