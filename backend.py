@@ -79,6 +79,7 @@ def get_user_role(token: str):
 @app.post("/produtos/", response_model=dict)
 async def create_produto(produto: Produto, token: str = Depends(oauth2_scheme)):
     role = get_user_role(token)
+    # Condição de token autenticador
     if role != "estoquista":
         raise HTTPException(status_code=403, detail="Acesso negado.")
 
