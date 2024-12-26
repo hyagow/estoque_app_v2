@@ -82,7 +82,7 @@ async def create_produto(produto: Produto, token: str = Depends(oauth2_scheme)):
     # Condição de token autenticador
     if role != "estoquista":
         raise HTTPException(status_code=403, detail="Acesso negado.")
-
+    # Condicional para caso falte preencher o campo da note fiscal
     if not produto.nota_fiscal:
         raise HTTPException(status_code=400, detail="Nota fiscal é obrigatória.")
     # Aqui vai inserir o produto no banco de dados
