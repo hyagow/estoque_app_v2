@@ -85,7 +85,7 @@ async def create_produto(produto: Produto, token: str = Depends(oauth2_scheme)):
 
     if not produto.nota_fiscal:
         raise HTTPException(status_code=400, detail="Nota fiscal é obrigatória.")
-
+    # Aqui vai inserir o produto no banco de dados
     with get_db_connection() as conn:
         conn.execute(
             "INSERT INTO produtos (nome, categoria, quantidade, preco, localizacao, nota_fiscal) VALUES (?, ?, ?, ?, ?, ?)",
