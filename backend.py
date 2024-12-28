@@ -98,6 +98,7 @@ async def create_produto(produto: Produto, token: str = Depends(oauth2_scheme)):
                 produto.nota_fiscal,
             ),
         )
+        # Esse comando confirma a introdução do produto no banco de dados
         conn.commit()
         return {"mensagem": "Produto cadastrado com sucesso!"}
 
