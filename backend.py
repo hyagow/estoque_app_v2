@@ -117,6 +117,7 @@ async def update_produto(
     produto_id: int, produto: Produto, token: str = Depends(oauth2_scheme)
 ):
     role = get_user_role(token)
+    # Condição de token autenticador
     if role != "estoquista":
         raise HTTPException(status_code=403, detail="Acesso negado.")
 
