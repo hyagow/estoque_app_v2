@@ -120,7 +120,7 @@ async def update_produto(
     # Condição de token autenticador
     if role != "estoquista":
         raise HTTPException(status_code=403, detail="Acesso negado.")
-
+    # Aqui vai atualizar os dados dos produtos no banco de dados
     with get_db_connection() as conn:
         conn.execute(
             "UPDATE produtos SET nome = ?, categoria = ?, quantidade = ?, preco = ?, localizacao = ?, nota_fiscal = ? WHERE id = ?",
