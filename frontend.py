@@ -254,7 +254,7 @@ token = st.sidebar.text_input(
     "Token de Acesso", type="password"
 )  # Para simular a entrada do token
 role = get_user_role(token) if token else None
-
+# Definição da role: estoquista e suas obrigações
 if role == "estoquista":
     menu = st.sidebar.radio(
         "Escolha uma opção:",
