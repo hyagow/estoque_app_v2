@@ -256,6 +256,7 @@ token = st.sidebar.text_input(
 role = get_user_role(token) if token else None
 # Definição da role: estoquista e suas obrigações
 if role == "estoquista":
+    # obrigações do estoquista
     menu = st.sidebar.radio(
         "Escolha uma opção:",
         [
