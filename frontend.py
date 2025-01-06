@@ -270,6 +270,7 @@ if role == "estoquista":
     # condicional do menu para cadastrar produtos 
     if menu == "Cadastrar Produto":
         cadastrar_produto(token)
+    # condicional do menu para listar os produtos cadastrados
     elif menu == "Listar Produtos":
         listar_produtos(token)
     elif menu == "Atualizar Estoque":
