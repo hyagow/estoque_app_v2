@@ -333,6 +333,7 @@ async def registrar_entrada(
 async def registrar_saida(
     produto_id: int, quantidade: int, token: str = Depends(oauth2_scheme)
 ):
+    # selecionar a role
     role = get_user_role(token)
     if role != "estoquista":
         raise HTTPException(status_code=403, detail="Acesso negado.")
