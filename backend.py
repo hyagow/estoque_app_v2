@@ -337,7 +337,7 @@ async def registrar_saida(
     role = get_user_role(token)
     if role != "estoquista":
         raise HTTPException(status_code=403, detail="Acesso negado.")
-
+    # conexão com o db para atualizar os pedidos/quantidades
     with get_db_connection() as conn:
         conn.execute(
             "UPDATE produtos SET quantidade = quantidade - ? WHERE id = ? AND quantidade >= ?",
