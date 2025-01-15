@@ -315,6 +315,7 @@ async def relatorio_semanal(token: str = Depends(oauth2_scheme)):
 async def registrar_entrada(
     produto_id: int, quantidade: int, token: str = Depends(oauth2_scheme)
 ):
+    # verifica o token que foi preenchido e autentica se confere com a opção: estoquista
     role = get_user_role(token)
     if role != "estoquista":
         raise HTTPException(status_code=403, detail="Acesso negado.")
