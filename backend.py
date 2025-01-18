@@ -294,6 +294,7 @@ async def relatorio_semanal(token: str = Depends(oauth2_scheme)):
                 "SELECT nome, quantidade FROM produtos WHERE id = ?",
                 (mov["produto_id"],),
             ).fetchone()
+            # Condicional para inserir o produto na base de movimentação.
             if produto:
                 relatorio.append(
                     {
