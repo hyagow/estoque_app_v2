@@ -253,7 +253,7 @@ async def read_movimentacoes(token: str = Depends(oauth2_scheme)):
 @app.get("/movimentacoes/", response_model=List[dict])
 async def my_movimentacoes(token: str = Depends(oauth2_scheme)):
     usuario = token.split(":")[0]  # Obtém o nome do usuário do token
-
+    # Conexão para selecionar todas as movimentações solicitadas.
     with get_db_connection() as conn:
         movimentacoes = conn.execute(
             "SELECT * FROM movimentacoes WHERE pedido_id IN (SELECT id FROM solicitacoes_compra WHERE usuario = ?)",
