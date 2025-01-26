@@ -244,6 +244,7 @@ async def listar_minhas_solicitacoes(token: str = Depends(oauth2_scheme)):
 # Rota para ver as movimentações
 @app.get("/movimentacoes/", response_model=List[dict])
 async def read_movimentacoes(token: str = Depends(oauth2_scheme)):
+    # Conexão para carrgar todas as movimentações solicitadas.
     with get_db_connection() as conn:
         movimentacoes = conn.execute("SELECT * FROM movimentacoes").fetchall()
         return [dict(movimentacao) for movimentacao in movimentacoes]
