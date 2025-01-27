@@ -290,6 +290,7 @@ async def relatorio_semanal(token: str = Depends(oauth2_scheme)):
 
         # Para cada produto, obtém a quantidade atual e calcula a posição
         relatorio = []
+        # Looping nas movimentações onde o id foi chamado e convoca unitariamente.
         for mov in movimentacoes:
             produto = conn.execute(
                 "SELECT nome, quantidade FROM produtos WHERE id = ?",
