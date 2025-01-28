@@ -348,4 +348,5 @@ async def registrar_saida(
             (quantidade, produto_id, quantidade),
         )
         conn.commit()
+    # mensagem de resposta para o sucesso do registro de saida.
     return {"mensagem": "Saída de produto registrada com sucesso!"}
