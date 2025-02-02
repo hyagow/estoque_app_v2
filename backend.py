@@ -228,7 +228,7 @@ async def listar_solicitacoes(token: str = Depends(oauth2_scheme)):
 # Rota para listar as solicitações do usuario: usuario
 @app.get("/compras/solicitacoes/meus/", response_model=List[dict])
 async def listar_minhas_solicitacoes(token: str = Depends(oauth2_scheme)):
-    # Conexão para carrgar todas as solicitações solicitadas pelo usuário.
+    # Conexão para carregar todas as solicitações solicitadas pelo usuário.
     role = get_user_role(token)
     if role != "usuario":
         raise HTTPException(status_code=403, detail="Acesso negado.")
