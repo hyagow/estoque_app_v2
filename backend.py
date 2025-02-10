@@ -230,6 +230,7 @@ async def listar_solicitacoes(token: str = Depends(oauth2_scheme)):
 async def listar_minhas_solicitacoes(token: str = Depends(oauth2_scheme)):
     # Conexão para carregar todas as solicitações solicitadas pelo usuário.
     role = get_user_role(token)
+    # Condicional para validar o status 403 caso o pass esteja incorreto.
     if role != "usuario":
         raise HTTPException(status_code=403, detail="Acesso negado.")
 
