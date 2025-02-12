@@ -42,6 +42,7 @@ def listar_produtos(token):
     st.header("Lista de Produtos")
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(f"{API_URL}/produtos/", headers=headers)
+    # condicional para listar os produtos
     if response.status_code == 200:
         produtos = response.json()
         for produto in produtos:
