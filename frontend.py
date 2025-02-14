@@ -58,7 +58,7 @@ def atualizar_estoque(token):
     st.header("Atualizar Estoque")
     produto_id = st.number_input("ID do Produto", min_value=1)
     quantidade = st.number_input("Nova Quantidade", min_value=0)
-
+    # butao paa atualizar com a response positiva de atualização
     if st.button("Atualizar"):
         headers = {"Authorization": f"Bearer {token}"}
         response = requests.put(
